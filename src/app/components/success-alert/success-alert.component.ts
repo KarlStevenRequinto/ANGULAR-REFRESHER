@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class SuccessAlertComponent {
   number = 10;
   letter = 'winner';
+  username = '';
+  disableBtn = true;
   constructor() {
     setTimeout(() => {
       this.letter = 'loser';
@@ -24,5 +26,18 @@ export class SuccessAlertComponent {
     if (this.letter === '') {
       this.letter = 'loser';
     }
+  }
+  isEmpty(event: any) {
+    // console.log(event.target.value);
+    this.username = event.target.value;
+    if (event.target.value !== '') {
+      this.disableBtn = false;
+    } else {
+      this.disableBtn = true;
+    }
+  }
+  clearText() {
+    this.username = '';
+    this.disableBtn = true;
   }
 }
